@@ -64,5 +64,12 @@ class Solution:
             if char_count_s[char] != char_count_t[char]:
                 return False
         return True 
+    
+        # Alternative solutions
+        return Counter(t) == Counter(s)
+
+        return sorted(s) == sorted(t)
+    
+    
 # @lc code=end
 
