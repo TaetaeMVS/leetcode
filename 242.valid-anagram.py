@@ -70,6 +70,5 @@ class Solution:
 
         return sorted(s) == sorted(t)
     
-    
 # @lc code=end
 
