@@ -62,12 +62,12 @@
 # @lc code=start
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        for num in nums:
-            if target - num in nums and target-num != num:
-                return [nums.index(num), nums.index(target-num)]
-            elif target-num == num and nums.count(num) > 1:
-                first_index = nums.index(num)
-                second_index = nums[first_index + 1:].index(num) + first_index + 1
-                return [first_index, second_index]
+        prevMap = {} # val : index
+        
+        for i, num in enumerate(nums):
+            diff = target - num
+            if diff in prevMap:
+                return [i, prevMap[diff]]
+            prevMap[num] = i
 # @lc code=end
 
