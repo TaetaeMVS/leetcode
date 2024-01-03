@@ -43,6 +43,7 @@
 # @lc code=start
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        """
         count = {}
         for i in nums:
             if i not in count:
@@ -54,6 +55,52 @@ class Solution:
             output.append(max(count, key=count.get))
             del count[max(count, key=count.get)]
         return output
+        """
+        
+        """ My bucket sort
+        counts_dict = {}
+        for i in range(len(nums) + 1):
+            counts_dict[i] = []
+        count = {}
+        for i in nums:
+            if i not in count:
+                count[i] = 1
+            else:
+                count[i] += 1
+        output = [] 
+        for key in count:
+            counts_dict[count[key]].append(key)
+        print(counts_dict)
+        i = len(nums)
+        output = []
+        while i >= 0:
+            if counts_dict[i] != []:
+                for value in counts_dict[i]:
+                    output.append(value)
+            if len(output) == k:
+                return output
+            i -= 1
+        """
+        
+        # Neetcode solution
+        count = {}
+        freq = [[] for x in range(len(nums) + 1)]
+        
+        for n in nums:
+            count[n] = 1 + count.get(n, 0)
+        for n, c in count.items():
+            freq[c].append(n)
+        
+        res = []
+        for i in range(len(freq) - 1, 0, -1):
+            for n in freq[i]:
+                res.append(n)
+                if len(res) == k:
+                    return res
+            
+                
+            
+
         
 # @lc code=end
 
