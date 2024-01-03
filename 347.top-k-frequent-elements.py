@@ -43,7 +43,7 @@
 # @lc code=start
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        """
+        """ First attempt
         count = {}
         for i in nums:
             if i not in count:
