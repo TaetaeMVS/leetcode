@@ -80,9 +80,11 @@
 #
 
 # @lc code=start
+import collections
 class Solution:
  
     def isValidSudoku(self, board: List[List[str]]) -> bool:
+        """
         def validateRow(board):
             for row in board:
                 num_count = {}
@@ -92,6 +94,7 @@ class Solution:
                     elif num in num_count and num != ".":
                         return False
             return True
+
         columns = []
         tmp_col = []
         for i in range(9):
@@ -120,7 +123,23 @@ class Solution:
         squares_bool = validateRow(squares)
         
         return rows and cols and squares_bool
-    
+"""
+        rows = collections.defaultdict(set)
+        cols = collections.defaultdict(set)
+        squares = collections.defaultdict(set)
+        
+        for r in range(9):
+            for c in range(9):
+                if board[r][c] == ".":
+                    continue
+                if (board[r][c] in rows[r] or
+                    board[r][c] in cols[c] or 
+                    board[r][c] in squares[(r//3, c//3)]):
+                    return False
+                rows[r].add(board[r][c])
+                cols[c].add(board[r][c])
+                squares[(r//3, c//3)].add(board[r][c])
+        return True
     
             # 
 # @lc code=end
