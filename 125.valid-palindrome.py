@@ -64,7 +64,7 @@ class Solution:
         transformed = s.lower()
         l = 0
         r = len(s) - 1
-        while l <= r:
+        while l < r:
             if not transformed[l].isalnum():
                 l += 1
                 continue
