@@ -70,13 +70,9 @@
 # @lc code=start
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        # numSet = set(numbers)
         l = 0 
         r = len(numbers) - 1
         while l < r:
-            # diff = target - numbers[l]
-            # if diff != numbers[l] and diff in numSet:
-                # return [l + 1, numbers.index(diff) + 1]
             if numbers[l] + numbers[r] == target:
                 return [l + 1, r + 1]
             elif numbers[l] + numbers[r] > target:
