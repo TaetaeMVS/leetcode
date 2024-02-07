@@ -61,20 +61,24 @@ class Solution:
         while topR <= bottomR:
             
             midR = (bottomR + topR) // 2
-            print("Searching row " + str(midR))
+            # print("Searching row " + str(midR))
             if target > matrix[midR][-1]:
+                """
                 print("target > matrix[midR][-1], \
                       MidR = " + str(midR) + \
                           "matrix[midR][-1] = " + str(matrix[midR][-1]))
+                """
                 topR = midR + 1
             elif target < matrix[midR][0]:
+                bottomR = midR - 1
+                """
                 print("target < matrix[midR][0]" + 
                       "\n matrix[midR][0] = " + str(matrix[midR][0]))
-                bottomR = midR - 1
                 print("Set bottomR to " + str(bottomR))
+                """
             else:
                 # execute binary search
-                print("Executing binary search")
+                # print("Executing binary search")
                 l, r = 0, len(matrix[midR]) - 1
                 while l <= r:
                     i = (l + r) // 2
