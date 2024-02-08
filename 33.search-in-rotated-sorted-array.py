@@ -68,28 +68,34 @@ class Solution:
                 
                 # left sorted portion and target is less than val
                 else:
+                    # if target is less than the left most value, and we are in the left sorted portion
+                    # we need to check the right sorted portion
                     if target < nums[l]:
                         l = mid + 1
+                    # target is greater than the left most value, and it is also greater than val
+                    # we are in the left sorted portion, so we need to search to the right
                     else:
                         r = mid - 1
                         
                     
             # right sorted portion
-            elif val < nums[l]:
+            else:
                 # right sorted portion, and target > val
-                # [6, 1, 2, 3, 5]  t = 1
                 if target > val:
+                    # right sorted portion, target > val and target is less than or equal to the right most value.
+                    # therefore search to the right
                     if target <= nums[r]:
                         l = mid + 1
                 
+                    # right sorted portion, target > val, target is greater than the right most value
+                    # therefore search to the left
                     else:
                         r = mid - 1
                     
+                # right sorted portion, but target < val. 
+                # therefore search left
                 elif target < val:
                     r = mid - 1
-            else:
-                return -1
-            
                     
         return -1
                 
