@@ -58,8 +58,12 @@ class Solution:
         while l <= r:
             mid = (l + r) // 2
             val = nums[mid]
+            
+            # base case
             if val == target:
                 return mid
+            
+            # left sorted portion
             if val >= nums[l]:
                 # left sorted portion, and target is larger than val
                 # therefore target must be to the right of val
